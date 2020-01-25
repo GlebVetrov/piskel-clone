@@ -1,0 +1,16 @@
+<div class="canvas-container">
+  <app-frames
+    (addFrame)="addFrame()" (deleteFrame)="deleteFrame($event)" (selectFrame)="selectFrame($event)" (copyFrame)="copyFrame($event)"
+    [frames]="frames" [canvasSize]="canvasSize" [activeFrame]="activeFrame">
+  </app-frames>
+  <div>
+    <canvas #canvas class="canvas"></canvas>
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row class="size-button-container">
+        <button *ngFor="let canvSize of canvasSizes" [ngClass]="{selected: canvSize === canvasSize, 'size-button': true}" (click)="size(canvSize)" mat-raised-button color="accent">{{canvSize}}</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <app-animation [frames]="frames"></app-animation>
+</div>

@@ -1,0 +1,58 @@
+<div class="tools-container">
+  <mat-toolbar (click)="setToolOptions($event)" class="tools" color="primary">
+    <mat-toolbar-row matTooltip="Pen size from 1 to 4 pixel" class="tools-size">
+      <div [ngClass]="{selected: 1 === currentSize}" class="tools-size__item tools-size__item-one" data-size="1">
+      </div>
+      <div [ngClass]="{selected: 2 === currentSize}" class="tools-size__item tools-size__item-two" data-size="2">
+      </div>
+      <div [ngClass]="{selected: 3 === currentSize}" class="tools-size__item tools-size__item-three" data-size="3">
+      </div>
+      <div [ngClass]="{selected: 4 === currentSize}" class="tools-size__item tools-size__item-four" data-size="4">
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <button  [ngClass]="{selected: 'pen' === currentTool}" matTooltip="Pen tool (P)" class="tool-icon tool-icon-pen" data-tool="pen">
+      </button>
+      <span class="spacer"></span>
+      <button [ngClass]="{selected: 'mirror' === currentTool}" matTooltip="Vertical mirror tool (V)" class="tool-icon tool-icon-mirror" data-tool="mirror">
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <button [ngClass]="{selected: 'bucket' === currentTool}" matTooltip="Paint bucket tool (B)" class="tool-icon tool-icon-bucket" data-tool="bucket">
+      </button>
+      <span class="spacer"></span>
+      <button [ngClass]="{selected: 'swapcolor' === currentTool}" matTooltip="Paint all pixel in same color (A)" class="tool-icon tool-icon-colorswap" data-tool="swapcolor">
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <button [ngClass]="{selected: 'eraser' === currentTool}" matTooltip="Eraser tool (E)" class="tool-icon tool-icon-eraser" data-tool="eraser">
+      </button>
+      <span class="spacer"></span>
+      <button [ngClass]="{selected: 'stroke' === currentTool}" matTooltip="Stroke tool (L)" class="tool-icon tool-icon-stroke" data-tool="stroke">
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <button [ngClass]="{selected: 'colorpicker' === currentTool}" matTooltip="Color picker (O)" class="tool-icon tool-icon-colorpicker" data-tool="colorpicker">
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <input type="color" #primaryColorRef class="field-radio" (change)="setColor('primary')">
+      <span class="spacer"></span>
+      <input type="color" #secondaryColorRef class="field-radio" (change)="setColor('secondary')">
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <app-canvas class="tools-canvas"
+    (colorChange)="changeColor($event)"
+    [primaryColor]="primaryColor"
+    [secondaryColor]="secondaryColor"
+    [currentTool]="currentTool"
+    [currentSize]="currentSize"
+    [colorPrimaryInput]="primaryColorRef"
+  ></app-canvas>
+</div>

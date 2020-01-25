@@ -1,0 +1,11 @@
+<div class="animation-wrapper">
+  <div class="animation-frame-container">
+    <img #frame class="animation-frame" [src]="img" alt="frame" width="200" height="200">
+  </div>
+  <div class="animation-control">
+    <span class="animation-control__num">{{rangeValue}} FPS</span>
+    <input class="animation-control__range" [value]="rangeValue" (input)="range($event)" min="1" max="24" type="range">
+  </div>
+  <button class="animation-btn" (click)="fullScreen()" mat-raised-button color="accent">Fullscreen</button>
+  <button class="animation-btn" (click)="saveFrames()" mat-raised-button color="accent">Save in browser</button>
+</div>
